@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Timeline;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -8,6 +8,10 @@ public class BossLight : Health
     [Header("Components")]
     public BossVitalOrb[] vitalOrb;
     public Player _player;
+
+    [Header("Victory UI")]
+    public GameObject victoryPanel;
+
     public override void Awake()
     {
         base.Awake();
@@ -38,6 +42,14 @@ public class BossLight : Health
     public override void Death(float time)
     {
         base.Death(time);
+
+        if (victoryPanel != null)
+        {
+            victoryPanel.SetActive(true);
+            Time.timeScale = 0f; 
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
     public override void Desapear(float time)
     {

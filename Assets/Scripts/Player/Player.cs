@@ -142,6 +142,9 @@ public class Player : MonoBehaviour
 
     public void KnockbackCounter(float stunTime)
     {
+        
+        if (!gameObject.activeInHierarchy) return;
+
         StartCoroutine(KnockbackCounterCoroutine(stunTime));
     }
 
