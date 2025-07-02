@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ public class PlayerAttack : MonoBehaviour
     public SpriteRenderer weaponImage;
     public Player player;
     public GameObject weapon;
-    public int damage=0; 
+    public int damage=0;
+    public Action<int> OnAttack;
     void Start()
     {
         damage = player.damage;
@@ -21,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
     {
         ActiveWeapon();
         anim.SetTrigger("Attack");
+        OnAttack?.Invoke(damage);
         yield return new WaitForSecondsRealtime(0.2f);
         DesactiveWeapon();
     }

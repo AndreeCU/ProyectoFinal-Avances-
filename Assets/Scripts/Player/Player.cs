@@ -39,6 +39,10 @@ public class Player : MonoBehaviour
     public PlayerEvents _playerEvents;
     public AudioSource _audioSteps; 
     private PlayerBehabiurs anim;
+
+
+
+   // public PlayerAttack pa;
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -46,6 +50,8 @@ public class Player : MonoBehaviour
         ChangeColor(Color.yellow);
         health = GetComponent<Health>();
         knockBack.Raise(2);
+
+      //  pa.OnAttack += SetAttackAnim;
     }
 
     private void Update()
@@ -53,6 +59,10 @@ public class Player : MonoBehaviour
         Direction();
 
     }
+   /* public void SetAttackAnim(int value)
+    {
+        anim.SetTrigger("Attack");
+    }*/
 
 
     private void FixedUpdate()
