@@ -9918,11 +9918,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4edae8afee9e012408d0c0fb94ebee7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 1126852396173155746}
-  weaponImage: {fileID: 5717333023814629678}
+  weaponSprite: {fileID: 0}
+  weaponCollider: {fileID: 0}
   player: {fileID: 4744379610978892222}
-  weapon: {fileID: 5159337815077062154}
-  damage: 0
+  activeTime: 0.2
 --- !u!114 &2341235495730554339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12624,7 +12623,7 @@ GameObject:
   - component: {fileID: 6851216287643126347}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

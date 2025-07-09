@@ -91,15 +91,15 @@ public class SubJefe : MonoBehaviour
     {
         if (jugador != null)
         {
-            jugador.TakeDamage(damage);
-            jugador.knockback(transform, retrocesoForce, 0.5f);
-
-            if (jugador.gameObject.activeInHierarchy)
-                jugador.KnockbackCounter(0.5f);
+            IDamageable damageable = jugador.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(damage, direccion);
+            }
         }
     }
 
-    public void RecibirDanio(int cantidad, Vector2 direccion)
+    public void RecibirDaño(int cantidad, Vector2 direccion)
     {
         if (estaMuerto) return;
 

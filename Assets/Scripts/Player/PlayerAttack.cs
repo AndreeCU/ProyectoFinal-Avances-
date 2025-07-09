@@ -4,45 +4,78 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public Animator anim;
-    public SpriteRenderer weaponImage;
-    public Player player;
-    public GameObject weapon;
-    public int damage=0;
-    public Action<int> OnAttack;
-    void Start()
+    #region Referencias públicas (asignables desde Inspector)
+    [Header("Referencias")]
+    [SerializeField] private SpriteRenderer weaponSprite;
+    [SerializeField] private Collider2D weaponCollider;
+    [SerializeField] private Player player;
+
+    [Header("Configuración")]
+    [SerializeField] private float activeTime = 0.2f; // Tiempo que el arma permanece activa
+    #endregion
+
+    private Animator anim;
+    private int damage;
+
+    private void Awake()
     {
-        damage = player.damage;
+        anim = GetComponent<Animator>();
+
+        if (player == null)
+            player = GetComponent<Player>();
+
+        if (weaponSprite == null)
+            Debug.LogWarning("[PlayerAttack] Falta asignar weaponSprite", this);
+        if (weaponCollider == null)
+            weaponCollider = GetComponentInChildren<Collider2D>(true);
+
+        if (weaponCollider != null)
+            weaponCollider.enabled = false;
     }
-    public void Activettack()
+
+   // private void Start()
+   // {
+   //     damage = player != null ? Player.damage : 1;
+   // }
+
+    // Llamado por PlayerPowerStates u otros scripts para realizar un ataque
+    public void PerformAttack() => Attack();
+
+    public void Attack()
     {
-        StartCoroutine(ActiveWeaponCorutine());
+        if (!gameObject.activeInHierarchy) return;
+        StopAllCoroutines();
+        StartCoroutine(AttackRoutine());
     }
-   
-    IEnumerator ActiveWeaponCorutine()
+
+    private IEnumerator AttackRoutine()
     {
-        ActiveWeapon();
-        anim.SetTrigger("Attack");
-        OnAttack?.Invoke(damage);
-        yield return new WaitForSecondsRealtime(0.2f);
-        DesactiveWeapon();
+        EnableWeapon();
+        if (anim != null) anim.SetTrigger("Attack");
+        yield return new WaitForSeconds(activeTime);
+        DisableWeapon();
     }
-    void ActiveWeapon()
+
+    private void EnableWeapon()
     {
-        weaponImage.enabled = true;
-        weapon.GetComponent<Collider2D>().enabled=true;
+        if (weaponSprite != null) weaponSprite.enabled = true;
+        if (weaponCollider != null) weaponCollider.enabled = true;
     }
-    void DesactiveWeapon()
+
+    private void DisableWeapon()
     {
-        weaponImage.enabled = false;
-        weapon.GetComponent<Collider2D>().enabled = false;
+        if (weaponSprite != null) weaponSprite.enabled = false;
+        if (weaponCollider != null) weaponCollider.enabled = false;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (!weaponCollider.enabled) return; // Solo si el arma está activa
+        if (other.CompareTag("Enemy"))
         {
-            Health tmp =collision.gameObject.GetComponent<Health>();
-            tmp.UpdateHealth(damage);
+            Health h = other.GetComponent<Health>();
+            if (h != null)
+                h.UpdateHealth(damage);
         }
     }
 }

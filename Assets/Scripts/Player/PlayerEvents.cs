@@ -47,7 +47,7 @@ public class PlayerEvents : MonoBehaviour
         Heal.responseFloat += _player.HealLife;
         
         ////////-----------------Attack-----------------------///////
-        Attack.response += _playerAttack.Activettack;
+        //Attack.response += _playerAttack.Activettack;
         //Attack.response += PlaySoundAttack;
         ////////-----------------Movement-----------------------///////
         Movement.response += _player.MovePlayer;
@@ -73,7 +73,7 @@ public class PlayerEvents : MonoBehaviour
     void DesuscribeEvents()
     {
         ////////-----------------Attack-----------------------///////
-        Attack.response -= _playerAttack.Activettack;
+        //Attack.response -= _playerAttack.Activettack;
         Died.response -= _player.Die;        
         Movement.response -= _player.MovePlayer;
         Knockback.responseInt -= _player.TakeDamage;

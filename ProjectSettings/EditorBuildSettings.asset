@@ -9,32 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 57802e1227a85f04c95458734c268e39
   - enabled: 1
-    path: Assets/Scenes/UI.unity
-    guid: 14b10c016448d984a8b561e60f7ec0a7
-  - enabled: 1
-    path: Assets/Scenes/PerdistePipipi.unity
-    guid: 781b0faaefb6c3d43b2797852ee9b339
-  - enabled: 1
     path: Assets/Scenes/Nivel 2.unity
     guid: f8184613d3f23c64bae2b8ce4512b2f3
   - enabled: 1
     path: Assets/Scenes/Nivel 3.unity
     guid: 7c361fc7b71255c4f8bf8fc36d53e689
   - enabled: 1
-    path: Assets/Scenes/Creditos.unity
-    guid: 59e2a1a4d2605644dbda6e2399ced82f
+    path: Assets/Scenes/SegundoPiso.unity
+    guid: 3db1e42f82fb5414cb4c0982c00dff5b
   - enabled: 1
     path: Assets/Scenes/Controles-Tutorial.unity
     guid: 2e3efcd641e4c404a8492137605da0d7
-  - enabled: 0
-    path: Assets/Scenes/Andree.unity
-    guid: 1edb8bff6f519834ead1617a2b33b1f8
-  - enabled: 0
-    path: Assets/Scenes/Alvaro.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 0
-    path: Assets/Scenes/Testing.unity
-    guid: e8b63c21ddf106349a4c71958cee1ecf
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Weapon
   - Wall
+  - Puerta
+  - SpawnPuerta1
+  - SpawnInicio
   layers:
   - Default
   - TransparentFX
@@ -14,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Ground
+  - Enemy
   - 
   - 
   - 
