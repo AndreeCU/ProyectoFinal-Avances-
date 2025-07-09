@@ -108,16 +108,16 @@ public class BossVitalOrb : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, angulo);
 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Weapon")
-        {
-            if (player != null)
-                updateBossLife.Raise((float)player.damage);
-            else
-                Debug.Log("player is null");
-        }
-    }
+   //private void OnTriggerEnter2D(Collider2D collision)
+   //{
+   //    if (collision.gameObject.tag == "Weapon")
+   //    {
+   //        if (player != null)
+   //            updateBossLife.Raise((float)player.damage);
+   //        else
+   //            Debug.Log("player is null");
+   //    }
+   //}
     [System.Serializable]
     public struct ValuesToFire
     {
